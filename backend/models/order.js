@@ -11,16 +11,49 @@ const orderSchema = new mongoose.Schema({
         {
             product: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "Product"
+                ref: "Product",
+                required: true
+            },
+            productNameAtPurchase: {
+                type: String,
+                trim: true
+            },
+            productImageAtPurchase: {
+                type: String,
+                trim: true
+            },
+            productAtPurchase: {
+                type: Number,
+                min: 0
             },
             quantity: {
                 type: Number,
-                default: 1
+                required: true,
+                min: 1
             }
         }
     ],
+
+    // Monetary amounts are in the store's displayed currency.
+        // Optional temporarily for existing orders created before this change.
+        subtotal: {
+            type: Number,
+            min: 0
+        },
+
+        shippingCost: {
+            type: Number,
+            min: 0
+        },
+
+        taxAmount: {
+            type: Number,
+            min: 0
+        },
+
     totalAmount: {
         type: Number,
+        min: 0,
         required: true
     },
     shippingInfo: {

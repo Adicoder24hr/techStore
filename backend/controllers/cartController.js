@@ -10,7 +10,7 @@ export const getCart = async (req, res) =>{
         })
     }catch(err){
         console.error(err);
-        return res.status(500).json({
+        return res.status(400).json({
             message: err.message
         })
     }
@@ -29,7 +29,7 @@ export const addToCart = async (req, res) => {
         })
     }catch(err){
         console.error(err);
-        return res.status(500).json({
+        return res.status(400).json({
             message: err.message
         })
     }
